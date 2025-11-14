@@ -1,1 +1,55 @@
-<p>rutas works!</p>
+<div class="container">
+  <h1 class="title">Consulta de Seguimiento</h1>
+  
+  <div class="seguimiento-card">
+    <div class="seguimiento-form">
+      <input 
+        type="text" 
+        class="seguimiento-input" 
+        placeholder="Ingrese el código del paquete (ej: PKG001)"
+        [(ngModel)]="codigoIngresado"
+        (keyup.enter)="consultarPaquete()"
+      />
+      <button class="seguimiento-button" (click)="consultarPaquete()">
+        Consultar
+      </button>
+    </div>
+    
+    <!-- Resultados -->
+    <div class="resultados-container" *ngIf="busquedaRealizada">
+      <div class="resultado-card" *ngIf="paqueteEncontrado; else noEncontrado">
+        <div class="resultado-header">
+          <h3 class="resultado-codigo">Código: {{ paqueteEncontrado.codigo }}</h3>
+          <span class="estado-seguimiento" 
+                [class.estado-preparacion]="paqueteEncontrado.estado === 'En preparación'"
+                [class.estado-transito]="paqueteEncontrado.estado === 'En tránsito'"
+                [class.estado-demorado]="paqueteEncontrado.estado === 'Demorado'"
+                [class.estado-entregado]="paqueteEncontrado.estado === 'Entregado'">
+            {{ paqueteEncontrado.estado }}
+          </span>
+        </div>
+        <div class="resultado-info">
+          <p class="info-item">
+            <strong>Provincia:</strong> {{ paqueteEncontrado.provincia }}
+          </p>
+          <p class="info-item">
+            <strong>Localidad:</strong> {{ paqueteEncontrado.localidad }}
+          </p>
+        </div>
+        <div class="mapa-container">
+          <iframe 
+            [src]="getMapUrl()"
+            class="mapa-iframe"
+            frameborder="0"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+      <ng-template #noEncontrado>
+        <div class="error-message">
+          <p>Paquete no encontrado</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

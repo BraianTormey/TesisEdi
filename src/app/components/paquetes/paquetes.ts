@@ -25,8 +25,9 @@ interface Paquete {
 })
 export class PaquetesComponent {
   ordenAscendente: boolean = true;
+  estadoFiltro: string = 'Todos';
 
-  paquetes: Paquete[] = [
+  paquetesOriginales: Paquete[] = [
     {
       numeroPaquete: 'PKG-001',
       empresa: 'Logística Express',
@@ -113,12 +114,31 @@ export class PaquetesComponent {
     }
   ];
 
-  ordenarPorFechaEnvio(): void {
-    this.ordenAscendente = !this.ordenAscendente;
-    this.paquetes.sort((a, b) => {
+  get paquetes(): Paquete[] {
+    let paquetesFiltrados = this.paquetesOriginales;
+
+    // Filtrar por estado
+    if (this.estadoFiltro !== 'Todos') {
+      paquetesFiltrados = paquetesFiltrados.filter(
+        p => p.estado === this.estadoFiltro
+      );
+    }
+
+    // Ordenar por fecha de envío
+    const paquetesOrdenados = [...paquetesFiltrados].sort((a, b) => {
       const fechaA = new Date(a.fechaEnvio).getTime();
       const fechaB = new Date(b.fechaEnvio).getTime();
       return this.ordenAscendente ? fechaA - fechaB : fechaB - fechaA;
     });
+
+    return paquetesOrdenados;
+  }
+
+  ordenarPorFechaEnvio(): void {
+    this.ordenAscendente = !this.ordenAscendente;
+  }
+
+  filtrarPorEstado(estado: string): void {
+    this.estadoFiltro = estado;
   }
 }

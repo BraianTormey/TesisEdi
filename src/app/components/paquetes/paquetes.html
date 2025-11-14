@@ -2,6 +2,15 @@
   <h1 class="title">Paquetes</h1>
   
   <div class="controls">
+    <div class="filter-group">
+      <label for="estado-filtro" class="filter-label">Filtrar por Estado:</label>
+      <select id="estado-filtro" class="filter-select" [value]="estadoFiltro" (change)="filtrarPorEstado($any($event.target).value)">
+        <option value="Todos">Todos</option>
+        <option value="Pendiente">Pendiente</option>
+        <option value="En Envío">En Envío</option>
+        <option value="Entregado">Entregado</option>
+      </select>
+    </div>
     <button class="sort-button" (click)="ordenarPorFechaEnvio()">
       Ordenar por Fecha de Envío
       <span class="sort-icon">{{ ordenAscendente ? '↑' : '↓' }}</span>
