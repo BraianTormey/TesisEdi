@@ -36,44 +36,39 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 70px;
+}
 
-  .logo {
-    color: var(--color-primary);
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
 
-  .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
+  a {
+    text-decoration: none;
+    color: var(--color-secondary);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
 
-    a {
-      text-decoration: none;
-      color: var(--color-secondary);
-      font-weight: 500;
-      padding: 0.5rem 0;
-      position: relative;
-      transition: color 0.3s ease;
+    &:hover {
+      color: var(--color-primary);
+    }
 
-      &:hover {
-        color: var(--color-primary);
-      }
+    &.active {
+      color: var(--color-primary);
+      font-weight: 600;
 
-      &.active {
-        color: var(--color-primary);
-        font-weight: 600;
-
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background-color: var(--color-primary);
-          border-radius: 2px;
-        }
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--color-primary);
+        border-radius: 2px;
       }
     }
   }
