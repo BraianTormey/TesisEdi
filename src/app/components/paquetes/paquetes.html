@@ -1,1 +1,59 @@
-<p>paquetes works!</p>
+<div class="container">
+  <h1 class="title">Paquetes</h1>
+  
+  <div class="controls">
+    <button class="sort-button" (click)="ordenarPorFechaEnvio()">
+      Ordenar por Fecha de Envío
+      <span class="sort-icon">{{ ordenAscendente ? '↑' : '↓' }}</span>
+    </button>
+  </div>
+  
+  <div class="table-wrapper">
+    <table class="paquetes-table">
+      <thead>
+        <tr>
+          <th>N° Paquete</th>
+          <th>Empresa</th>
+          <th>Provincia</th>
+          <th>Localidad</th>
+          <th>Destinatario</th>
+          <th>N° Camión</th>
+          <th>Chofer</th>
+          <th>Fecha Envío</th>
+          <th>Fecha Estimada</th>
+          <th>Tipo</th>
+          <th>Peso (kg)</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let paquete of paquetes">
+          <td>{{ paquete.numeroPaquete }}</td>
+          <td>{{ paquete.empresa }}</td>
+          <td>{{ paquete.provincia }}</td>
+          <td>{{ paquete.localidad }}</td>
+          <td>{{ paquete.destinatario }}</td>
+          <td>{{ paquete.numeroCamion }}</td>
+          <td>{{ paquete.chofer }}</td>
+          <td>{{ paquete.fechaEnvio }}</td>
+          <td>{{ paquete.fechaEstimada }}</td>
+          <td>
+            <span class="tipo-paquete" [class.tipo-fragil]="paquete.tipoPaquete === 'Frágil'"
+                  [class.tipo-normal]="paquete.tipoPaquete === 'Normal'"
+                  [class.tipo-express]="paquete.tipoPaquete === 'Express'">
+              {{ paquete.tipoPaquete }}
+            </span>
+          </td>
+          <td>{{ paquete.peso }} kg</td>
+          <td>
+            <span class="status" [class.status-pendiente]="paquete.estado === 'Pendiente'"
+                  [class.status-en-envio]="paquete.estado === 'En Envío'"
+                  [class.status-entregado]="paquete.estado === 'Entregado'">
+              {{ paquete.estado }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
