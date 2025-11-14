@@ -1,12 +1,67 @@
 <div class="container">
   <h1 class="main-title">Bienvenido a ByteCore</h1>
-  <p class="subtitle">Sistema de gestión de envíos y logística</p>
+  <p class="subtitle">Panel general del sistema de envíos y logística</p>
 
   <!-- KPIs Section -->
   <div class="kpis-section">
     <div class="kpi-card" *ngFor="let kpi of kpis">
       <h3 class="kpi-title">{{ kpi.titulo }}</h3>
       <p class="kpi-value">{{ kpi.valor }}</p>
+    </div>
+  </div>
+
+  <!-- Dashboard Content Grid -->
+  <div class="dashboard-grid">
+    <!-- Gráfico Section -->
+    <div class="chart-card">
+      <h2 class="card-title">Distribución de Estados</h2>
+      <div class="chart-container">
+        <div class="chart-bars">
+          <div 
+            *ngFor="let item of distribucionEstados" 
+            class="chart-bar-item"
+          >
+            <div class="bar-label">{{ item.estado }}</div>
+            <div class="bar-container">
+              <div 
+                class="bar-fill" 
+                [style.width.%]="item.porcentaje"
+                [style.background-color]="item.color"
+              ></div>
+              <span class="bar-value">{{ item.cantidad }} ({{ item.porcentaje }}%)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Últimos Paquetes Section -->
+    <div class="table-card">
+      <h2 class="card-title">Últimos Paquetes</h2>
+      <div class="table-wrapper">
+        <table class="paquetes-table">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Destinatario</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let paquete of ultimosPaquetes">
+              <td>{{ paquete.codigo }}</td>
+              <td>{{ paquete.destinatario }}</td>
+              <td>
+                <span class="estado-badge" [class]="getEstadoClass(paquete.estado)">
+                  {{ paquete.estado }}
+                </span>
+              </td>
+              <td>{{ paquete.fecha }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -22,16 +77,5 @@
         {{ acceso.nombre }}
       </a>
     </div>
-  </div>
-
-  <!-- Descripción Section -->
-  <div class="descripcion-section">
-    <p class="descripcion-text">
-      ByteCore es una plataforma integral diseñada para optimizar la gestión de envíos y logística. 
-      Permite realizar un seguimiento completo de paquetes, gestionar rutas de distribución, 
-      consultar el estado de envíos en tiempo real y administrar reclamos de manera eficiente. 
-      Nuestro sistema está diseñado para facilitar las operaciones logísticas y mejorar la experiencia 
-      tanto de operadores como de clientes.
-    </p>
   </div>
 </div>

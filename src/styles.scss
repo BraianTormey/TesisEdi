@@ -1,3 +1,6 @@
+/* Google Fonts - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 /* Global Styles */
 :root {
   --color-bg: #F8FAFC;
@@ -6,6 +9,7 @@
   --color-text: #111827;
   --color-accent: #0EA5E9;
   --color-border: #E2E8F0;
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Reset and Base Styles */
@@ -16,10 +20,29 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-main);
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography - Apply to all text elements */
+* {
+  font-family: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-main);
+  font-weight: 700;
+  line-height: 1.2;
+  transition: color 0.2s ease;
+}
+
+p, span, a, li, td, th, label, input, select, textarea, button {
+  font-family: var(--font-main);
+  transition: color 0.2s ease, font-size 0.2s ease;
 }
 
 /* Layout */
@@ -37,6 +60,7 @@ body {
   justify-content: space-between;
   align-items: center;
   min-height: 70px;
+  font-family: var(--font-main);
 }
 
 .nav-links {
@@ -48,9 +72,10 @@ body {
     text-decoration: none;
     color: var(--color-secondary);
     font-weight: 500;
+    font-family: var(--font-main);
     padding: 0.5rem 0;
     position: relative;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease, font-weight 0.2s ease;
 
     &:hover {
       color: var(--color-primary);
@@ -91,7 +116,9 @@ button, .btn {
   border-radius: 0.25rem;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  font-family: var(--font-main);
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 
   &:hover {
     background-color: darken(#3B82F6, 10%);
@@ -133,12 +160,41 @@ button, .btn {
     border: 1px solid var(--color-border);
     border-radius: 0.25rem;
     font-size: 1rem;
+    font-family: var(--font-main);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
     &:focus {
       outline: none;
       border-color: var(--color-primary);
       box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
     }
+  }
+}
+
+/* Tables */
+table {
+  font-family: var(--font-main);
+  
+  th, td {
+    font-family: var(--font-main);
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+  
+  th {
+    font-weight: 600;
+  }
+  
+  td {
+    font-weight: 400;
+  }
+}
+
+/* Footer */
+footer {
+  font-family: var(--font-main);
+  
+  h1, h2, h3, h4, h5, h6, p, a, span {
+    font-family: var(--font-main);
   }
 }
 
