@@ -12,48 +12,136 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+ByteCore — Sistema de Gestión de Envíos
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Tecnologías utilizadas
 
-```bash
-ng generate component component-name
-```
+Angular 19 (standalone components)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+TypeScript
 
-```bash
-ng generate --help
-```
+HTML5
 
-## Building
+SCSS
 
-To build the project run:
+Google Fonts
 
-```bash
-ng build
-```
+Simulación de datos (sin backend)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Routing
 
-## Running unit tests
+Diseño responsive
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Paleta de colores utilizada
+--color-bg: #F8FAFC;
+--color-primary: #3B82F6;
+--color-secondary: #64748B;
+--color-text: #111827;
+--color-accent: #0EA5E9;
+--color-border: #E2E8F0;
 
-```bash
-ng test
-```
+Estructura del proyecto
+El proyecto está organizado siguiendo buenas prácticas de Angular y separación por componentes.
 
-## Running end-to-end tests
+src/
+app/
+components/
+inicio/
+paquetes/
+rutas/
+reclamos/
+app.routes.ts
+app.component.ts
+assets/
+styles.scss
+main.ts
 
-For end-to-end (e2e) testing, run:
+Cada componente contiene su archivo HTML, SCSS y TS de forma separada para facilitar la lectura y mantenibilidad.
 
-```bash
-ng e2e
-```
+Funcionalidades principales
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Inicio / Dashboard
 
-## Additional Resources
+KPIs con datos simulados (paquetes en tránsito, entregados, reclamos, etc.)
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Gráfico simulado en CSS
+
+Tabla con últimos paquetes
+
+Accesos rápidos a otras secciones
+
+Diseño simple, limpio y profesional
+
+Paquetes
+
+Tabla con datos simulados
+
+Campos como código, destinatario, localidad, estado, fecha
+
+Estados visuales diferenciados
+
+Rutas
+
+Campo para ingresar el código de un paquete
+
+Simulación del estado actual del paquete
+
+Mapa embebido mediante iframe de Google Maps para contexto visual
+
+Reclamos
+
+Formulario con campos: código de paquete, tipo de reclamo, descripción, email
+
+Validaciones básicas
+
+Simulación de envío sin backend
+
+Navbar y notificaciones
+
+Barra superior con navegación
+
+Logo que redirige al inicio
+
+Sistema básico de notificaciones simuladas con un panel desplegable
+
+Footer
+
+Información del sitio
+
+Año y autor
+
+Enlaces internos
+
+Diseño responsivo
+
+Personalización realizada
+Este proyecto incluye modificaciones respecto al trabajo grupal original:
+
+Nuevo diseño visual completo
+
+Dashboard implementado desde cero
+
+Paleta de colores personalizada
+
+Componentes reorganizados
+
+Sistema de notificaciones simulado
+
+Footer y navbar rediseñados
+
+Tipografía profesional importada desde Google Fonts
+
+Datos ficticios coherentes y organizados
+
+Estructura y navegación cuidada
+
+Cómo ejecutar el proyecto
+
+Clonar el repositorio
+git clone https://github.com/tu-usuario/bytecore.git
+
+Instalar dependencias
+npm install
+
+Ejecutar el servidor de desarrollo
+ng serve -o
